@@ -11,7 +11,7 @@ function Start () {
 
 function Update () {
 
-    if (minig <= 0)
+    if (minig <= 0 || minig > 3)
         return;
 
     var cam : Camera = transform.Find("camera").GetComponent.<Camera>();
