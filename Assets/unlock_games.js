@@ -1,13 +1,9 @@
 ﻿#pragma strict
 
-var time_between_levels = 3;
+var time_between_levels = 1;
 var current_minigame = 0;
 var time_since_last_minigame : float = 0;
 public var minigame : deploy[];
-
-function Start () {
-
-}
 
 function Update () {
     

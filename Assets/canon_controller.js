@@ -3,6 +3,7 @@
 private var time_last_bullet : float;
 private var bullet_speed : float = 100;
 private var fire_delay : float = 0.5;
+public var brick_bar : brick_bar_controller;
 public var bullet_prefab : GameObject;
 
 function Start() {
@@ -26,5 +27,6 @@ function Update () {
     if (touch != Vector2(0, 0)) {
         transform.position.x = touch.x;
         fire();
+        brick_bar.move(touch.x);
     }
 }
