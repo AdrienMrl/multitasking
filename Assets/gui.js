@@ -10,11 +10,27 @@ function Start() {
 }
 
 function getWorldPos(percx : float, percy : float) {
+    Start();
    return cam.ViewportToWorldPoint(new Vector3(percx, percy, 10));
 }
 
 function screenToWorld(pos : Vector2) {
+    Start();
     return cam.ScreenToWorldPoint(Vector3(pos.x, pos.y, 0));
+}
+
+function getScale(obj : GameObject,
+        target_size_x : float, target_size_y : float) : Vector3 {
+
+    Start();
+    var bounds = obj.GetComponent.<Renderer>().bounds.size;
+
+    var scaleX = target_size_x == 0 ? obj.transform.localScale.x :
+        obj.transform.localScale.x * target_size_x / bounds.x;
+    var scaleY = target_size_y == 0 ? obj.transform.localScale.y :
+        obj.transform.localScale.y * target_size_y / bounds.y;
+
+    return Vector3(scaleX, scaleY, 1);
 }
 
 function getTouch() : Vector2 {

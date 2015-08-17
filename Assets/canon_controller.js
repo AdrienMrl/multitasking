@@ -20,13 +20,17 @@ function fire() {
     }
 }
 
+function move(x: float) {
+    transform.position.x = x;
+    fire();
+}
+
 function Update () {
 
     var touch : Vector2 = GetComponent.<gui>().getTouch();
 
     if (touch != Vector2(0, 0)) {
-        transform.position.x = touch.x;
-        fire();
+        move(touch.x);
         brick_bar.move(touch.x);
     }
 }
