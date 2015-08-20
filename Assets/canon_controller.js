@@ -17,6 +17,7 @@ function fire() {
         bullet.transform.position = transform.position;
         bullet.GetComponent.<Rigidbody2D>()
             .AddForce(transform.up * bullet_speed);
+        Destroy(bullet, 20);
     }
 }
 

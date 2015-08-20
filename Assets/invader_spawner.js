@@ -19,8 +19,11 @@ function spawnInvader(x : float) {
 
 function spawn() {
     while (true) {
+
+        if (GetComponent.<deploy>().active) {
+            spawnInvader(Random.Range(0f, 1f));
+        }
         var wait_time = Random.Range(1f / min_spawn_rate, 1f / max_spawn_rate);
         yield WaitForSeconds(wait_time);
-        spawnInvader(Random.Range(0f, 1f));
     }
 }

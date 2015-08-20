@@ -8,7 +8,11 @@ function Start () {
 }
 
 function spawn() {
+    
+    if (GetComponent.<deploy>().active == false)
+        return;
+
     var planet = Instantiate(planet_prefab);
     planet.transform.position = GetComponent.<gui>()
-        .getWorldPos(0.5, 1.3);
+        .getWorldPos(0.5, 1.1);
 }
