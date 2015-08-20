@@ -30,7 +30,6 @@ function Update () {
     GetComponent.<Rigidbody2D>().AddForce(tilt * speed * Time.deltaTime);
 
     if (!is_inbounds()) {
-        print("deathed");
         GetComponent.<flash>().flashing = true;
         game_engine.game_is_over = true;
     }

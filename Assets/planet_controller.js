@@ -3,6 +3,7 @@
 private var color_true : Color = Color.red;
 private var color_false : Color = Color.blue;
 private var type : boolean;
+public var dead : boolean;
 
 function getType() {
     return type;
@@ -26,4 +27,5 @@ function Update() {
 function Start () {
     type = Random.Range(0, 2) == 0 ? false : true;
     setColor();
+    dead = false;
 }

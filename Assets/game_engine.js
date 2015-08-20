@@ -1,11 +1,16 @@
 ﻿#pragma strict
 
-private var time_between_levels = 1;
+private var time_between_levels = 15;
 private var current_minigame = 0;
 private var time_since_last_minigame : float = 0;
-public static var game_is_over : boolean = false;
+public static var game_is_over : boolean;
 public var minigame : deploy[];
 public var again : GameObject;
+
+function Start() {
+    game_is_over = false;
+    minigame[0].setActive(true);
+}
 
 function unlock_games() {
         time_since_last_minigame = 0;
@@ -21,6 +26,7 @@ function unlock_games() {
 function Update () {
     
     if (time_since_last_minigame > time_between_levels
+            + (time_between_levels * (current_minigame / 10.0))
             && current_minigame < 3) {
         unlock_games();
     }
@@ -29,6 +35,9 @@ function Update () {
 
     if (game_is_over && !again.activeSelf) {
         gameOver();
+    }
+    if (!game_is_over && again.activeSelf) {
+        again.SetActive(false);
     }
 }
 
@@ -40,11 +49,6 @@ function gameOver() {
 
 function play_again() {
     score.score = 0;
-    game_is_over = false;
-    again.SetActive(false);
-    again.SetActive(false);
-    again.SetActive(false);
-    again.SetActive(false);
     again.SetActive(false);
     Application.LoadLevel(0);
 }

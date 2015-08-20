@@ -9,7 +9,7 @@ function Start () {
 
 function spawn() {
     
-    if (GetComponent.<deploy>().active == false)
+    if (GetComponent.<deploy>().getActive() == false)
         return;
 
     var planet = Instantiate(planet_prefab);

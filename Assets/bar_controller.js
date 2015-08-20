@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 private var state : boolean = false;
-private var lerpFactor : float = 10f;
+private var lerpFactor : float = 6f;
 private var timeLast : float = 0;
 private var its_ok_to_change_state : boolean = true;
 public var engine : game_engine;
@@ -36,9 +36,14 @@ function Update () {
 }
 
 function OnCollisionEnter2D(other : Collision2D) {
-    if (state == other.gameObject.GetComponent
-            .<planet_controller>().getType()) {
+
+    var planet_script : planet_controller =
+        other.gameObject.GetComponent.<planet_controller>();
+
+    if ((state == planet_script.getType() && lerpFactor * timeLast >= 1)
+            && !planet_script.dead) {
         other.gameObject.GetComponent.<flash>().flashing = true;
         engine.gameOver();
+        planet_script.dead = true;
     }
 }

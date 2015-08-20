@@ -14,7 +14,7 @@ function Update()
 {
     if (game_engine.game_is_over)
         GetComponent.<Rigidbody2D>().isKinematic = true;
-    if (deploy.active == false ||
+    if (deploy.getActive() == false ||
             GetComponent.<Rigidbody2D>().velocity.magnitude > 0.01)
         return;
     GetComponent.<Rigidbody2D>().AddForce(Vector3(100, -100, 0.0));

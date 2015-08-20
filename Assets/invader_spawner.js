@@ -1,8 +1,8 @@
 ﻿#pragma strict
 
 var invader_prefab : GameObject;
-private var max_spawn_rate : float = 1; // per sec
-private var min_spawn_rate : float = 0.3;
+private var max_spawn_rate : float = 0.8; // per sec
+private var min_spawn_rate : float = 0.2;
 
 function Start () {
     spawn();
@@ -20,7 +20,7 @@ function spawnInvader(x : float) {
 function spawn() {
     while (true) {
 
-        if (GetComponent.<deploy>().active) {
+        if (GetComponent.<deploy>().getActive()) {
             spawnInvader(Random.Range(0f, 1f));
         }
         var wait_time = Random.Range(1f / min_spawn_rate, 1f / max_spawn_rate);
